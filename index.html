@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock in system</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+  <div class="head">
+        <h1>Clock In & Clock Out System</h1>
+  </div>
+  <div class="container">
+    <form name="submit-to-google-sheet">
+
+      <label for="EMPLOYEE1">Name:</label>
+      <select id="EMPLOYEE1" name="EMPLOYEE1"  class="clock-out-names">
+        <option value=""></option>
+        <option value="Sophia Johnson">Sophia Johnson</option>
+        <option value="Michael Brown">Michael Brown</option>
+        <option value="Emily Martinez">Emily Martinez</option>
+        <option value="William Anderson">William Anderson</option>
+        <option value="Olivia Thompson">Olivia Thompson</option>
+        <option value="James Wilson">James Wilson</option>
+        <option value="Ava Rodriguez">Ava Rodriguez</option>
+        <option value="Ethan Garcia">Ethan Garcia</option>
+        <option value="Isabella Lopez">Isabella Lopez</option>
+        <option value="Alexander Lee">Alexander Lee</option>
+        <option value="Mia Hernandez">Mia Hernandez</option>
+        <option value="Benjamin Davis">Benjamin Davis</option>
+        <option value="Charlotte Martinez">Charlotte Martinez</option>
+        <option value="Daniel White">Daniel White</option>
+        <option value="Amelia Taylor">Amelia Taylor</option>
+        <option value="Logan Clark">Logan Clark</option>
+        <option value="Harper Moore">Harper Moore</option>
+        <option value="Lucas Adams">Lucas Adams</option>
+        <option value="Evelyn Lewis">Evelyn Lewis</option>
+        <option value="Mason King">Mason King</option>
+        <option value="Grace Carter">Grace Carter</option>
+        <option value="Samuel Rivera">Samuel Rivera</option>
+        <option value="Avery Mitchell">Avery Mitchell</option>
+        <option value="Liam Perez">Liam Perez</option>
+        <option value="Victoria Green">Victoria Green</option>
+        <option value="Jackson Baker">Jackson Baker</option>
+        <option value="Scarlett Hall">Scarlett Hall</option>
+        <option value="Noah Young">Noah Young</option>
+        <option value="Lily Collins">Lily Collins</option>
+        <option value="Gabriel Ramirez">Gabriel Ramirez</option>
+      </select>
+
+        <div class="clock-in">
+          <label for="CHECK IN">Activity:</label>
+          <select id="CHECK IN"  name="CHECK IN" class="activity" >
+            <option value=""></option>
+            <option value="Starting work">Starting work</option>
+            <option value="After lunch break">Lunch break</option>
+            <option value="leave">Leave</option>
+          </select>
+          <button id="clockin" class="btn" onclick="
+
+          clockIn(); 
+
+          ">CLOCK IN</button>
+        </div>
+
+
+      <label for="EMPLOYEE2">Name:</label>
+      <select id="EMPLOYEE2" name="EMPLOYEE2"  class="clock-in-names">
+        <option value=""></option>
+        <option value="Sophia Johnson">Sophia Johnson</option>
+        <option value="Michael Brown">Michael Brown</option>
+        <option value="Emily Martinez">Emily Martinez</option>
+        <option value="William Anderson">William Anderson</option>
+        <option value="Olivia Thompson">Olivia Thompson</option>
+        <option value="James Wilson">James Wilson</option>
+        <option value="Ava Rodriguez">Ava Rodriguez</option>
+        <option value="Ethan Garcia">Ethan Garcia</option>
+        <option value="Isabella Lopez">Isabella Lopez</option>
+        <option value="Alexander Lee">Alexander Lee</option>
+        <option value="Mia Hernandez">Mia Hernandez</option>
+        <option value="Benjamin Davis">Benjamin Davis</option>
+        <option value="Charlotte Martinez">Charlotte Martinez</option>
+        <option value="Daniel White">Daniel White</option>
+        <option value="Amelia Taylor">Amelia Taylor</option>
+        <option value="Logan Clark">Logan Clark</option>
+        <option value="Harper Moore">Harper Moore</option>
+        <option value="Lucas Adams">Lucas Adams</option>
+        <option value="Evelyn Lewis">Evelyn Lewis</option>
+        <option value="Mason King">Mason King</option>
+        <option value="Grace Carter">Grace Carter</option>
+        <option value="Samuel Rivera">Samuel Rivera</option>
+        <option value="Avery Mitchell">Avery Mitchell</option>
+        <option value="Liam Perez">Liam Perez</option>
+        <option value="Victoria Green">Victoria Green</option>
+        <option value="Jackson Baker">Jackson Baker</option>
+        <option value="Scarlett Hall">Scarlett Hall</option>
+        <option value="Noah Young">Noah Young</option>
+        <option value="Lily Collins">Lily Collins</option>
+        <option value="Gabriel Ramirez">Gabriel Ramirez</option>
+      </select>
+
+        <div class="clock-out">
+          <label for="CHECK OUT">Activity:</label>
+          <select  id="CHECK OUT" name="CHECK OUT" class="activity" >
+            <option value=""></option>
+            <option value="Signing off">Signing off</option>
+            <option value="Lunch break">Lunch break</option>
+            <option value="leave">Leave</option>
+          </select>
+          <button id="clockout" class="btn" onclick="
+
+          clockOut(); 
+          
+          ">CLOCK OUT</button>
+        </div>
+
+
+        <div class="leave-out">
+        <label for="LEAVE TYPE">Select Leave Type:</label>
+        <select id="LEAVE TYPE" name="LEAVE TYPE" class="leave-type">
+            <option value=""></option>
+            <option value="annual">Annual Leave</option>
+            <option value="sick">Sick Leave</option>
+            <option value="maternity">Maternity/Paternity Leave</option>
+            <option value="family_medical">Family/Medical Leave</option>
+            <option value="emergency">Emergency Leave</option>
+            <option value="unpaid">Unpaid Leave</option>
+        </select>
+        <input id="message" name="IN">
+        <input id="message1" name="OUT">
+        </div>
+        <p id="msg"></p>
+       
+    </form>
+    
+  </div>
+    
+    
+
+    <script src="script.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzxzEt8nvXY49OePzvY3YKVoBT_LKDNYGEHPJRjkPooVv6WL3dZTZA3pzlEndSO9Z493g/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById('msg');
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response =>{
+              msg.innerHTML = "messege sent successfully"
+              setTimeout(() => {
+                msg.innerHTML = ""
+              }, 3000);
+
+              form.reset()
+            } )
+            .catch(error => console.error('Error!', error.message))
+        })
+
+
+      </script>
+</body>
+</html>

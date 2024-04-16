@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(to right, 
+        #1014dd 0%,     
+        #1E90FF 40%,    
+        #59abda 60%);   
+}
+h1{
+    text-align: center;
+}
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.container{
+    min-width: 50px;
+    background: white;
+    border-radius: 10px;
+    background-color: antiquewhite;
+    height: 400px;
+    width: 500px;
+    margin: auto;
+    padding-right: 30px;
+
+}
+.clock-in-names,
+.clock-out-names{
+    padding: 7px 28px;
+    background-color: rgb(224, 224, 224);
+    margin-bottom:10px ;
+    margin-top: 10px;
+    color: black;
+    border: none;
+    border-radius: 4px;
+}
+.btn{
+    background-color: rgb(87, 57, 46);
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+    transition: 0.3s all ease;
+}
+.btn:hover{
+    background-color: rgb(223, 177, 122);
+    transform: translateY(-0.5);
+}
+#clockin{
+    margin: 10px;
+    padding: 20px 30px;
+}
+#clockout{
+    margin: 10px;
+    padding: 20px 25px;
+}
+#message,
+#message1{
+    width: 0;
+    height: 0;
+    border: none;
+    background-color: rgb(214, 209, 209);
+}
+.activity{
+    border: none;
+    padding: 20px;
+    background-color: rgb(87, 57, 46);
+    border-radius: 4px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#activity:hover{
+    background-color: rgb(223, 177, 122);
+}
+.leave-type{
+    border: none;
+    padding: 20px;
+    background-color: rgb(87, 57, 46);
+    border-radius: 4px;
+    margin: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#leaveType:hover{
+    background-color: rgb(223, 177, 122);
+}
